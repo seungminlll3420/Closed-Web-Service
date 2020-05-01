@@ -1,0 +1,53 @@
+
+<h3> 게시글</h3>
+
+
+<a href="/school_lists/new">글쓰러가기</a>   
+<a href="/posts/index">메인 가기</a>
+<hr>
+<h3>초등학교</h3>
+ <% SchoolList.where(school_name: @primary ).each do |list_primary|%>
+    
+    찾는 사람 : <%= list_primary.find_user_name %>
+    <hr>
+    키워드 : <%= list_primary.find_user_key %>
+    <hr>
+    지역 : <%= list_primary.find_user_area %>
+    <hr>
+    사연 : <%= list_primary.content %>
+    <a href="/school_lists/show/<%=list_primary.id%>">보기</a> 
+    <a href="/school_lists/edit/<%= list_primary.id %>">수정</a>
+    <a href="/school_lists/destroy/<%= list_primary.id %>">삭제</a>
+    <hr>
+<%end%> 
+
+<h3>중학교</h3>
+ <% SchoolList.where(school_name: @middle ).each do |list_middle|%>
+   
+    찾는 사람 : <%= list_middle.find_user_name %>
+    <hr>
+    키워드 : <%= list_middle.find_user_key %>
+    <hr>
+    지역 : <%= list_middle.find_user_area %>
+    <hr>
+    사연 : <%= list_middle.content %>
+    <a href="/school_lists/show/<%=list_middle.id%>">보기</a> 
+    <a href="/school_lists/edit/<%= list_middle.id %>">수정</a>
+    <a href="/school_lists/destroy/<%= list_middle.id %>">삭제</a>
+    <hr>
+<%end%> 
+<h3>고등학교</h3>
+ <% SchoolList.where(school_name: @high ).each do |list_high|%>
+  
+   찾는 사람 : <%= list_high.find_user_name %>
+    <hr>
+    키워드 : <%= list_high.find_user_key %>
+    <hr>
+    지역 : <%= list_high.find_user_area %>
+    <hr>
+    사연 : <%= list_high.content %>
+    <a href="/school_lists/show/<%=list_high.id%>">보기</a> 
+    <a href="/school_lists/edit/<%= list_high.id %>">수정</a>
+    <a href="/school_lists/destroy/<%= list_high.id %>">삭제</a>
+    <hr>
+<%end%> 

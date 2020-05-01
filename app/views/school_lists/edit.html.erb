@@ -1,0 +1,17 @@
+
+
+<form action="/school_lists/update/<%= @school_list.id %>" method="POST">
+    <label for="find_user_name_">찾는 사람 :</label>
+    <input type="text" name="find_user_name" value="<%= @school_list.find_user_name %>" id="find_user_name_" style="width: 50px;">
+   
+    <label for="find_user_key_">키워드 :</label>
+    <input type="text" name="find_user_key" value="<%= @school_list.find_user_key %>" id="find_user_key_" style="width: 50px;">
+   
+    <label for="find_user_area_">지역 :</label>
+    <input type="text" name="find_user_area" value="<%= @school_list.find_user_area %>" id="find_user_area_" style="width: 50px;">
+   
+    <label for="content_">사연 :</label>
+    <input type="text" name="content" value="<%= @school_list.content %>" id="content_" style="width: 50px;">
+
+    <button type="submit">제출</button>
+</form>

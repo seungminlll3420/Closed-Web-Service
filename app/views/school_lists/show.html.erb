@@ -1,0 +1,15 @@
+
+
+<hr>
+ 찾는사람 : <%= @school_list.find_user_name %> 
+ <hr>
+ 키워드 : <%= @school_list.find_user_key %>
+ <hr>
+ 지역 : <%= @school_list.find_user_area %> 
+ <hr>
+ 사연 : <%= @school_list.content %>
+<hr>
+    <a href="/school_lists/edit/<%= @school_list.id %>">수정</a>
+    <a href="/school_lists/destroy/<%= @school_list.id %>">삭제</a>
+<hr>
+<a href="/school_lists/index">게시판으로 가기</a>

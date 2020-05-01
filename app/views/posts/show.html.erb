@@ -1,0 +1,11 @@
+
+
+<hr>
+
+ title : <%= @post.title %> 
+ story : <%= @post.story %>
+<hr>
+    <a href="/posts/edit/<%= @post.id %>">수정</a>
+    <a href="/posts/destroy/<%= @post.id %>">삭제</a>
+<hr>
+<a href="/posts/index">게시판으로 가기</a>

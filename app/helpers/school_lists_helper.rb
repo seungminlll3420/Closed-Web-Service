@@ -1,0 +1,2 @@
+module SchoolListsHelper
+end

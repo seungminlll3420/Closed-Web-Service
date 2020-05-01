@@ -1,0 +1,52 @@
+<% @my.each do |myinfo| %>
+<% if myinfo.user_id == current_user.id%>
+<%= myinfo.myInfo_username %>님, 안녕하세요 
+
+<hr>
+<a href="/posts/index">게시판 가기</a>
+<hr>
+이메일 : <%= myinfo.myInfo_email %>
+
+<hr>
+<%= myinfo.myInfo_primary1 %> 초등학교 1학년 <%= myinfo.myInfo_primary_class1 %> 반 <%= myinfo.myInfo_primary_year-6%> 년
+<hr>
+<%= myinfo.myInfo_primary2 %> 초등학교 2학년 <%= myinfo.myInfo_primary_class2 %> 반 <%= myinfo.myInfo_primary_year-5%> 년
+<hr>
+<%= myinfo.myInfo_primary3 %> 초등학교 3학년 <%= myinfo.myInfo_primary_class3 %> 반 <%= myinfo.myInfo_primary_year-4%> 년
+<hr>
+<%= myinfo.myInfo_primary4 %> 초등학교 4학년 <%= myinfo.myInfo_primary_class4 %> 반 <%= myinfo.myInfo_primary_year-3%> 년
+<hr>
+<%= myinfo.myInfo_primary5 %> 초등학교 5학년 <%= myinfo.myInfo_primary_class5 %> 반 <%= myinfo.myInfo_primary_year-2%> 년
+<hr>
+<%= myinfo.myInfo_primary6 %> 초등학교 6학년 <%= myinfo.myInfo_primary_class6 %> 반 <%= myinfo.myInfo_primary_year-1%> 년
+
+
+
+
+
+
+
+<hr>
+<%= myinfo.myInfo_middle1 %> 중학교 1학년 <%= myinfo.myInfo_middle_class1 %> 반 <%= myinfo.myInfo_middle_year-3%> 년
+<hr>
+<%= myinfo.myInfo_middle2 %> 중학교 2학년 <%= myinfo.myInfo_middle_class2 %> 반 <%= myinfo.myInfo_middle_year-2%> 년
+<hr>
+<%= myinfo.myInfo_middle3 %> 중학교 3학년 <%= myinfo.myInfo_middle_class3 %> 반 <%= myinfo.myInfo_middle_year-1%> 년
+
+
+
+
+<hr>
+<%= myinfo.myInfo_high1 %> 고등학교 1학년 <%= myinfo.myInfo_high_class1 %> 반 <%= myinfo.myInfo_high_year-3%> 년
+<hr>
+<%= myinfo.myInfo_high2 %> 고등학교 2학년 <%= myinfo.myInfo_high_class2 %> 반 <%= myinfo.myInfo_high_year-2%> 년
+<hr>
+<%= myinfo.myInfo_high3 %> 고등학교 3학년 <%= myinfo.myInfo_high_class3 %> 반 <%= myinfo.myInfo_high_year-1%> 년
+
+<hr>
+
+<a href="/my_infos/edit/<%= myinfo.id %>">수정</a>
+<hr>
+<% end %>
+<% end %>
+

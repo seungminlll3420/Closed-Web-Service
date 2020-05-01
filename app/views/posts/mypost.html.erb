@@ -1,0 +1,16 @@
+<h3>내글 보기</h3>
+
+<% @post.each do |mypost| %>
+<%if mypost.user_id == current_user.id%>
+ title : <%= mypost.title %> 
+ story : <%= mypost.story %>
+<hr>
+    <a href="/posts/edit/<%= mypost.id %>">수정</a>
+    <a href="/posts/destroy/<%= mypost.id %>">삭제</a>
+<hr>
+<%end%>
+<%end%>
+
+
+<hr>
+<a href="/posts/index">게시판으로 가기</a>

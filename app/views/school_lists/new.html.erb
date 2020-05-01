@@ -1,0 +1,32 @@
+<h3>글쓰기</h3>
+
+<form action="/school_lists/create" method="POST" enctype="multipart/form-data">
+    
+<select name="school_name">
+  <%for @primary_nem in 0..5  %>
+   <% if @primary[@primary_nem] != @primary[@primary_nem+1]  %>
+      <option value="<%=@primary[@primary_nem]%>"><%=@primary[@primary_nem]%></option>
+    <%end  %>
+ <% end  %>
+ </select>
+    <select name="school_option">
+       
+        <option value="primary">초등학교</option>
+        <option value="middle">중학교</option>
+        <option value="high">고등학교</option>
+    </select>
+ 
+    <label for="find_user_name_">찾는 사람 : </label>
+    <input type="text" name="find_user_name" id="find_user_name_" style="width: 40px;">
+    <br>
+    <label for="find_user_key_"> 키워드 : </label>    
+    <input type="text" name="find_user_key" id="find_user_key_" style="width: 50px;"> 
+    
+    <label for="find_user_area_"> 지역 :  </label>   
+    <input type="text" name="find_user_area" id="find_user_area_" style="width: 50px;"> 
+    
+    <label for="content_"> 사연 : </label>    
+    <input type="text" name="content" id="content_" style="width: 50px;"> 
+    
+    <button type="submit">제출</button>
+</form>

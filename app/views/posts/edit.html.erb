@@ -1,0 +1,12 @@
+<h3><%= @post.user_email %>님 글 수정</h3>
+
+<form action="/posts/update/<%= @post.id %>" method="POST">
+    <label for="title_">title :</label>
+    <input type="text" name="title" value="<%= @post.title %>" id="title_" style="width: 50px;">
+    <label for="story_"> story :</label>
+    <input type="text" name="story" value="<%= @post.story %>" id="story_" style="width: 15px;">
+    
+ 
+
+    <button type="submit">제출</button>
+</form>
