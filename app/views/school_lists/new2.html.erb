@@ -1,20 +1,3 @@
-
-
-<!--<form action="/school_lists/update/<%= @school_list.id %>" method="POST">-->
-<!--    <label for="find_user_name_">찾는 사람 :</label>-->
-<!--    <input type="text" name="find_user_name" value="<%= @school_list.find_user_name %>" id="find_user_name_" style="width: 50px;">-->
-   
-<!--    <label for="find_user_key_">키워드 :</label>-->
-<!--    <input type="text" name="find_user_key" value="<%= @school_list.find_user_key %>" id="find_user_key_" style="width: 50px;">-->
-   
-<!--    <label for="find_user_area_">지역 :</label>-->
-<!--    <input type="text" name="find_user_area" value="<%= @school_list.find_user_area %>" id="find_user_area_" style="width: 50px;">-->
-   
-<!--    <label for="content_">사연 :</label>-->
-<!--    <input type="text" name="content" value="<%= @school_list.content %>" id="content_" style="width: 50px;">-->
-
-<!--    <button type="submit">제출</button>-->
-<!--</form>-->
 <!doctype html>
 
 <html lang="kr">
@@ -43,7 +26,7 @@
       flex: 6;
     }
     
-        .navbar-nav{
+    .navbar-nav{
       margin-left: 50px;
     }
     
@@ -96,36 +79,51 @@
 
 <div class="post">
     <div class="card-item">
-        <form action="/school_lists/update/<%= @school_list.id %>" method="POST" enctype="multipart/form-data">
+        <form action="/school_lists/create" method="POST" enctype="multipart/form-data">
 
+<div class="top">
+<div class="top_1">
+    <label for="formGroupExampleInput" style= "font-weight:bold;">#학교를 선택해주세요</label>
+    <br>
+        <select name="school_name" class="select">
+            <%for @primary_num in 0..5  %>
+            <% if @primary[@primary_num] != @primary[@primary_num+1]  %>
+      <option class="class_primary" value="<%=@primary[@primary_num]%>"><%=@primary[@primary_num]%></option>
+            <% end  %>
+            <% end  %>
+            <%for @middle_num in 0..2  %>
+            <% if @middle[@middle_num] != @middle[@middle_num+1]  %>
+      <option class="class_middle" value="<%=@middle[@middle_num]%>"><%=@middle[@middle_num]%></option>
+            <% end  %>
+            <% end  %>
+            <%for @high_num in 0..2  %>
+            <% if @high[@high_num] != @high[@high_num+1]  %>
+      <option class="class_high" value="<%=@high[@high_num]%>"><%=@high[@high_num]%></option>
+            <%end  %>
+            <% end  %>
+    </select>
+                   
+    <select id="class_school" name="school_option" class="select">
+      <option value="primary">초등학교</option>
+      <option value="middle">중학교</option>
+      <option value="high">고등학교</option>
+    </select>
+</div>
+</div>
 
 <br>
-<!--<form action="/school_lists/update/<%= @school_list.id %>" method="POST">-->
-<!--    <label for="find_user_name_">찾는 사람 :</label>-->
-<!--    <input type="text" name="find_user_name" value="<%= @school_list.find_user_name %>" id="find_user_name_" style="width: 50px;">-->
-   
-<!--    <label for="find_user_key_">키워드 :</label>-->
-<!--    <input type="text" name="find_user_key" value="<%= @school_list.find_user_key %>" id="find_user_key_" style="width: 50px;">-->
-   
-<!--    <label for="find_user_area_">지역 :</label>-->
-<!--    <input type="text" name="find_user_area" value="<%= @school_list.find_user_area %>" id="find_user_area_" style="width: 50px;">-->
-   
-<!--    <label for="content_">사연 :</label>-->
-<!--    <input type="text" name="content" value="<%= @school_list.content %>" id="content_" style="width: 50px;">-->
 
-<!--    <button type="submit">제출</button>-->
-<!--</form>-->
 <div class="middle">
 <div class="middle_1">
 <div class="middle_1_1">
     <label for="find_user_name_" style= "font-weight:bold;">#찾고 싶은 분의 이름을 작성해주세요</label>
     <br>
-    <input type="text" name="find_user_name"  value="<%= @school_list.find_user_name %>" id="find_user_name_" style="width: 120px; height: 30px; margin-left: 10px;">
+    <input type="text" name="find_user_name" id="find_user_name_" style="width: 120px; height: 30px; margin-left: 10px;">
     <br>
     <br>
     <label for="find_user_key_" style= "font-weight:bold;">#우리 둘만이 알 수 있는 내용을 키워드 형식으로 작성해주세요 </label>    
     <br>
-    <input type="text" name="find_user_key" id="find_user_key_"value="<%= @school_list.find_user_key %>" style="width: 800px; height: 30px; margin-left: 10px;"> 
+    <input type="text" name="find_user_key" id="find_user_key_" style="width: 800px; height: 30px; margin-left: 10px;"> 
     <br>
 </div>
 
@@ -133,14 +131,35 @@
     <br>
     <label for="content_" style= "font-weight:bold;">#구체적인 사연을 작성해주세요 </label>    
     <br>
-    <input type="text" name="content" id="content_" value="<%= @school_list.content %>" style="width: 800px; height: 250px; margin-left: 10px;"> 
-
+    <input type="text" name="content" id="content_" style="width: 800px; height: 250px; margin-left: 10px;"> 
 </div>
     <br>
     <button id="ww" type="submit" class="btn btn-primary" style="margin-left: 710px; margin-top: -10px; width: 100px; height: 30px;">등록하기</button>
 </div>
 </div>
 
+<script> 
+            
+    $(".class_middle").hide(); 
+    $(".class_high").hide(); 
+     
+    $("#class_school").change(function() {
+    if ($(this).val() == "primary"){
+        $(".class_primary").show(); 
+        $(".class_middle").hide(); 
+        $(".class_high").hide();
+    }else if($(this).val() == "middle"){
+        $(".class_primary").hide(); 
+        $(".class_middle").show(); 
+        $(".class_high").hide(); 
+    }else if($(this).val() == "high"){
+        $(".class_primary").hide(); 
+        $(".class_middle").hide(); 
+        $(".class_high").show(); 
+    }
+    });
+
+ </script>
 
 
 </div>

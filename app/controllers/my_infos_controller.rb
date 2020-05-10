@@ -1,5 +1,29 @@
 class MyInfosController < ApplicationController
   def index
+  
+      
+    @myI = MyInfo.all
+    @myI.each do |myinfo|
+      if myinfo.user_id == current_user.id
+        @my = myinfo
+        break
+      end  
+    end
+      @school_all = [
+        @my.myInfo_primary1,
+      @my.myInfo_primary2,
+      @my.myInfo_primary3,
+      @my.myInfo_primary4,
+      @my.myInfo_primary5,
+      @my.myInfo_primary6,
+      @my.myInfo_middle1,
+      @my.myInfo_middle2,
+      @my.myInfo_middle3,
+      @my.myInfo_high1,
+      @my.myInfo_high2,
+      @my.myInfo_high3
+      ]
+
   end
 
   def new

@@ -52,6 +52,6 @@ class PostsController < ApplicationController
   
   
   def mypost 
-      @post = Post.all 
+    
   end 
 end

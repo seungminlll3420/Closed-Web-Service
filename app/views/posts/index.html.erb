@@ -12,6 +12,8 @@
 <hr>
 <a href="/my_infos/new">내 정보</a>
 <hr>
+<a href="/my_infos/index">나를 찾을지도...?</a>
+<hr>
 <a href="/school_lists/index">학교 방</a>
 <hr>
 <% @post.each do |post| %>
@@ -20,6 +22,7 @@
     title : <%= post.title %>
     <hr>
     story : <%= post.story %>
+    
     <a href="/posts/show/<%=post.id%>">보기</a> 
     <a href="/posts/edit/<%= post.id %>">수정</a>
     <a href="/posts/destroy/<%= post.id %>">삭제</a>

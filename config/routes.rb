@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
-  
+
+  get 'main/show'
+  root "welcomes#show"
+
+  get 'welcomes/show'
   get 'school_lists/index'
   get 'school_lists/new'
+  get 'school_lists/new2'
   post 'school_lists/create'
   get 'school_lists/edit/:id' => "school_lists#edit"
   post 'school_lists/update/:id' => "school_lists#update"
   get 'school_lists/destroy/:id'=> "school_lists#destroy"
   get 'school_lists/show/:id' => "school_lists#show"
   devise_for :users
-  root "posts#index"
   
   get 'my_infos/index'
   get 'my_infos/new'
@@ -26,4 +30,9 @@ Rails.application.routes.draw do
   get 'posts/destroy/:id' => "posts#destroy"
   get 'posts/mypost'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'main/show'
+  
+  get 'main/real'
+
 end

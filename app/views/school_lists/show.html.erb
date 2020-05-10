@@ -1,15 +1,148 @@
 
 
+<!--<hr>-->
+<!-- 찾는사람 : <%= @school_list.find_user_name %> -->
+<!-- <hr>-->
+<!-- 키워드 : <%= @school_list.find_user_key %>-->
+<!-- <hr>-->
+<!-- 지역 : <%= @school_list.find_user_area %> -->
+<!-- <hr>-->
+<!-- 사연 : <%= @school_list.content %>-->
+<!--<hr>-->
+<!--    <a href="/school_lists/edit/<%= @school_list.id %>">수정</a>-->
+<!--    <a href="/school_lists/destroy/<%= @school_list.id %>">삭제</a>-->
+<!--<hr>-->
+<!--<a href="/school_lists/index">게시판으로 가기</a>-->
+<!doctype html>
+
+<html lang="kr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<style>
+
+    .container{
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+
+    }
+    
+    .side{
+      flex: 1;
+      border-right: solid grey;
+      height: auto;
+      margin-right: 20px;
+    }
+
+    .post{
+      flex: 6;
+    }
+    
+    .navbar-nav{
+      margin-left: 50px;
+    }
+    
+    .side-menu{
+      text-align: center;
+      padding-right: 2px;
+    }
+    
+</style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a cl
+    ass="navbar-brand" href="/school_lists/index">I LOVE SCHOOL S2</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">커뮤니티 기능(재미요소)1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">커뮤니티 기능(재미요소)2</a>
+        </li>
+      </ul>
+    </div>
+    </nav>
+  </header>
+
+ <div class="container">
+  <div class="side">
+  <div class="side-menu">
+    <% if user_signed_in? %>
+    hello! <%= current_user.email %><br>
+     <%= link_to "로그아웃", destroy_user_session_path, method: :delete %>
+   <%else %>
+     <%= link_to "로그인", user_session_path %>
+   <%end %>
+</div>
+  <div class="side-menu"><a href="/my_infos/new">내 정보 수정</a></div>
+  <hr>
+  <div class="side-menu"><a href="/school_lists/new2">글쓰기</a></div>
+  <div class="side-menu">내가 쓴 글 보기</div>
+  <div class="side-menu"><a href="/my_infos/index">나를 찾는 글 보기</a></div>
+  </div>
+
+
+<div class="post">
+    <div class="card-item">
+        <form action="/school_lists/create" method="POST" enctype="multipart/form-data">
+
+<br>
 <hr>
- 찾는사람 : <%= @school_list.find_user_name %> 
- <hr>
- 키워드 : <%= @school_list.find_user_key %>
- <hr>
- 지역 : <%= @school_list.find_user_area %> 
- <hr>
- 사연 : <%= @school_list.content %>
-<hr>
-    <a href="/school_lists/edit/<%= @school_list.id %>">수정</a>
-    <a href="/school_lists/destroy/<%= @school_list.id %>">삭제</a>
-<hr>
-<a href="/school_lists/index">게시판으로 가기</a>
+<!-- 찾는사람 : <%= @school_list.find_user_name %> -->
+<!-- <hr>-->
+<!-- 키워드 : <%= @school_list.find_user_key %>-->
+<!-- <hr>-->
+<!-- 지역 : <%= @school_list.find_user_area %> -->
+<!-- <hr>-->
+<!-- 사연 : <%= @school_list.content %>-->
+<!--<hr>-->
+<!--    <a href="/school_lists/edit/<%= @school_list.id %>">수정</a>-->
+<!--    <a href="/school_lists/destroy/<%= @school_list.id %>">삭제</a>-->
+<!--<hr>-->
+<!--<a href="/school_lists/index">게시판으로 가기</a>-->
+<div class="middle">
+<div class="middle_1">
+<div class="middle_1_1">
+    <label for="find_user_name_" style= "font-weight:bold;">#찾고 싶은 분의 이름</label>
+    <br>
+    <input type="text" name="find_user_name" value="<%= @school_list.find_user_name %>"  id="find_user_name_" style="width: 120px; height: 30px; margin-left: 10px;">
+    <br>
+    <br>
+    <label for="find_user_key_" style= "font-weight:bold;">#우리 둘만이 알 수 있는 키워드 </label>    
+    <br>
+    <input type="text" name="find_user_key"value="<%= @school_list.find_user_key %>" id="find_user_key_" style="width: 800px; height: 30px; margin-left: 10px;"> 
+    <br>
+</div>
+
+<div class="middle_1_2">
+    <br>
+    <label for="content_" style= "font-weight:bold;">사연 </label>    
+    <br>
+    <div type="text" name="content" id="content_" style="width: 800px; height: 250px; margin-left: 10px;">
+       <%= @school_list.content %>
+    </div>
+
+</div>
+    <br>
+    
+</div>
+</div>
+
+
+
+</div>
+</form> 
+     
+ </div>
+ </div>
+</body>

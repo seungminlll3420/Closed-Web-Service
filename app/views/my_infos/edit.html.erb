@@ -1,14 +1,110 @@
+<!doctype html>
+
+<html lang="kr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<style>
+
+    .container{
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+
+    }
+    
+    .side{
+      flex: 1;
+      border-right: solid grey;
+      height: auto;
+      margin-right: 20px;
+    }
+
+
+    .schoolinfo{
+        flex: 6;
+    }
+    
+    .navbar-nav{
+      margin-left: 50px;
+    }
+    
+    .side-menu{
+      text-align: center;
+      padding-right: 2px;
+    }
+
+    .intro{
+      font-weight: bold;
+    }
+
+    .school{
+      font-weight: bold;
+    }
+
+
+</style>
+</head>
+
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a cl
+    ass="navbar-brand" href="/school_lists/index">I LOVE SCHOOL S2</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">커뮤니티 기능(재미요소)1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">커뮤니티 기능(재미요소)2</a>
+        </li>
+      </ul>
+    </div>
+    </nav>
+  </header>
+
+ <div class="container">
+  <div class="side">
+  <div class="side-menu">
+    <% if user_signed_in? %>
+    hello! <%= current_user.email %><br>
+     <%= link_to "로그아웃", destroy_user_session_path, method: :delete %>
+   <% else %>
+     <%= link_to "로그인", user_session_path %>
+   <% end %>
+</div>
+  <div class="side-menu"><a href="/my_infos/new">내 정보 수정</a></div>
+  <hr>
+  <div class="side-menu"><a href="/school_lists/new2">글쓰기</a></div>
+  <div class="side-menu">내가 쓴 글 보기</div>
+  <div class="side-menu"><a href="/my_infos/index">나를 찾는 글 보기</a></div>
+  </div>
+  
+  
+  
+  
+<div class="schoolinfo">
+  
 <form action="/my_infos/update/<%= @my.id %>" method="POST" enctype="multipart/form-data">
-    <input type="text" name="myInfo_username" value="<%= @my.myInfo_username%>" id="myInfo_username_" style="width: 40px;"> 
-    <label for="myInfo_username_"> 님, 안녕하세요!</label>
+
+    <div class="school">
+    <input type="text" name="myInfo_username" value="<%= @my.myInfo_username %>" id="myInfo_username_" style="width: 60px;"> 
+    <label for="myInfo_username_"> 님의 학교 정보입니다.</label>
+    </div>
+
     <br>
-    <input type="text" name="myInfo_email" value="<%= @my.myInfo_email%>" id="myInfo_email_" style="width: 40px;"> 
-    <label for="myInfo_email_"> 이메일을 입력 해주세요!</label>
-    
-    
-    <br>
-    <p>초등학교 정보를 입력해주세요.</p>  
-    <br>
+
+    <div class="school">
+    <label for="myInfo_primary_year_"> [초등학교] (졸업년도 : <input type="text" name="myInfo_primary_year" value="<%= @my.myInfo_primary_year %>" id="myInfo_primary_year_"style="width: 40px;">년)
+    </label>
+    </div>
     <input type="text" name="myInfo_primary1" value="<%= @my.myInfo_primary1 %>" id="myInfo_primary1_" style="width: 50px;"> 
     <label for="myInfo_primary1_"> 초등학교 1학년 </label>
     <input type="text" name="myInfo_primary_class1" value="<%= @my.myInfo_primary_class1 %>" id="myInfo_primary_class1_" style="width: 15px;">
@@ -38,13 +134,14 @@
     <label for="myInfo_primary6_"> 초등학교 6학년 </label>
     <input type="text" name="myInfo_primary_class6" value="<%= @my.myInfo_primary_class6 %>" id="myInfo_primary_class6_" style="width: 15px;">
     <label for="myInfo_primary_class6_"> 반 </label>
-    <br>
-    <input type="text" name="myInfo_primary_year" value="<%= @my.myInfo_primary_year %>" id="myInfo_primary_year_"style="width: 30px;">
-    <label for="myInfo_primary_year_"> 초등학교 졸업 년도 </label>
-    
-    
-         <p>중학교 정보를 입력해주세요.</p>   
-     <br>
+
+<br>
+<br>
+
+    <div class="school">
+    <label for="myInfo_middle_year_"> [중학교] (졸업년도 : <input type="text" name="myInfo_middle_year" value="<%= @my.myInfo_middle_year %>" id="myInfo_middle_year_"style="width: 40px;">년)
+    </label>
+    </div>
     <input type="text" name="myInfo_middle1" value="<%= @my.myInfo_middle1 %>" id="myInfo_middle1_" style="width: 50px;"> 
     <label for="myInfo_middle1_"> 중학교 1학년 </label>
     <input type="text" name="myInfo_middle_class1" value="<%= @my.myInfo_middle_class1 %>" id="myInfo_middle_class1_" style="width: 15px;">
@@ -61,13 +158,14 @@
     <label for="myInfo_middle3_"> 중학교 3학년 </label>
     <input type="text" name="myInfo_middle_class3" value="<%= @my.myInfo_middle_class3 %>" id="myInfo_middle_class3_"style="width: 15px;">
     <label for="myInfo_middle_class3_"> 반 </label>
-    
-    <br>
-    <input type="text" name="myInfo_middle_year" value="<%= @my.myInfo_middle_year %>" id="myInfo_middle_year_"style="width: 30px;">
-    <label for="myInfo_middle_year_"> 중학교 졸업 년도 </label>
- 
-     <p>고등학교 정보를 입력해주세요.</p>   
-     <br>
+
+<br>
+<br>
+
+    <div class="school">
+    <label for="myInfo_high_year_"> [고등학교] (졸업년도 : <input type="text" name="myInfo_high_year" value="<%= @my.myInfo_high_year %>" id="myInfo_high_year_"style="width: 40px;">년)
+    </label>
+    </div>
     <input type="text" name="myInfo_high1" value="<%= @my.myInfo_high1 %>" id="myInfo_high1_" style="width: 50px;"> 
     <label for="myInfo_high1_"> 고등학교 1학년 </label>
     <input type="text" name="myInfo_high_class1" value="<%= @my.myInfo_high_class1 %>" id="myInfo_high_class1_" style="width: 15px;">
@@ -86,8 +184,6 @@
     <label for="myInfo_high_class3_"> 반 </label>
     
     <br>
-    <input type="text" name="myInfo_high_year" value="<%= @my.myInfo_high_year %>" id="myInfo_high_year_"style="width: 30px;">
-    <label for="myInfo_high_year_"> 고등학교 졸업 년도 </label>
-     <br>
-    <button type="submit">제출</button>
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px; width: 100px; height: 30px;">작성하기</button>
+</div>
 </form>
